@@ -1,0 +1,24 @@
+<!-- templates/course_selection/course_selection_home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Selection</title>
+</head>
+<body>
+    <h1>Select Your Courses</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <ul>
+            {% for course in courses %}
+                <li>
+                    <input type="checkbox" name="courses" value="{{ course.id }}">
+                    {{ course.course_name }} ({{ course.course_code }}) - {{ course.semester }} {{ course.academic_year }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Enroll</button>
+    </form>
+</body>
+</html>

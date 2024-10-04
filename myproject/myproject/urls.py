@@ -23,4 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('login_logout.urls')),
     path('account/', include('account.urls')),
+    path('course_selection/', include('course_selection.urls')),
+    path('courses/', include('courses.urls', namespace='courses')),  # เพิ่ม URL นี้
+
 ]

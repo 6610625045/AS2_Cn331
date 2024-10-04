@@ -9,6 +9,7 @@
 <body>
     <h1>Welcome to the Home Page</h1>
     <p>You are logged in as {{ user.username }}</p>
-    <p><a href="{% url 'logout' %}">Logout</a></p>  <!-- ลิงก์สำหรับล็อกเอาต์ -->
+    <p><a href="{% url 'course_selection_home' %}">Go to Course Selection</a></p>
+    <p><a href="{% url 'logout' %}">Logout</a></p>
 </body>
 </html>

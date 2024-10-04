@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ course.course_name }}</title>
+</head>
+<body>
+    <h1>{{ course.course_name }}</h1>
+    <p>Course Code: {{ course.course_code }}</p>
+    <p>Semester: {{ course.semester }}</p>
+    <p>Academic Year: {{ course.academic_year }}</p>
+    <p>Max Capacity: {{ course.max_capacity }}</p>
+    <p>Enrollment Status: {{ course.enrollment_status }}</p>
+    <a href="{% url 'course_list' %}">Back to Course List</a>
+</body>
+</html>
