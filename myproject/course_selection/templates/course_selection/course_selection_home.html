@@ -8,17 +8,20 @@
 </head>
 <body>
     <h1>Select Your Courses</h1>
-    <form method="POST">
+    
+    <form method="POST" action="{% url 'course_register' %}">
         {% csrf_token %}
         <ul>
-            {% for course in courses %}
-                <li>
-                    <input type="checkbox" name="courses" value="{{ course.id }}">
+        {% for course in courses %}
+            <li>
+                <label>
+                    <input type="checkbox" name="selected_courses" value="{{ course.id }}">
                     {{ course.course_name }} ({{ course.course_code }}) - {{ course.semester }} {{ course.academic_year }}
-                </li>
-            {% endfor %}
+                </label>
+            </li>
+        {% endfor %}
         </ul>
-        <button type="submit">Enroll</button>
+        <button type="submit">Register</button>
     </form>
 </body>
 </html>

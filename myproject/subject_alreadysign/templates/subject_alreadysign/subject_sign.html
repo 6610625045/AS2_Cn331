@@ -1,0 +1,22 @@
+<!-- subject_alreadysign/templates/subject_alreadysign/subject_sign.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Courses</title>
+</head>
+<body>
+    <h1>Registered Courses</h1>
+    <ul>
+        {% if registrations %}
+            {% for registration in registrations %}
+                <li>{{ registration.course.course_name }} - {{ registration.course.course_code }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No courses registered.</li>
+        {% endif %}
+    </ul>
+    <a href="{% url 'home' %}">Back to Home</a>  <!-- เปลี่ยนเส้นทางไปยังหน้า Home -->
+</body>
+</html>

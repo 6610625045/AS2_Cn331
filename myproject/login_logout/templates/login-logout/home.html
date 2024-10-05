@@ -10,6 +10,7 @@
     <h1>Welcome to the Home Page</h1>
     <p>You are logged in as {{ user.username }}</p>
     <p><a href="{% url 'course_selection_home' %}">Go to Course Selection</a></p>
+    <a href="{% url 'registered_courses' %}">View Registered Courses</a>
     <p><a href="{% url 'logout' %}">Logout</a></p>
 </body>
 </html>
