@@ -1,4 +1,3 @@
-<!-- templates/course_selection/course_selection_home.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +8,13 @@
 <body>
     <h1>Select Your Courses</h1>
     
-    <form method="POST" action="{% url 'course_register' %}">
+    <form method="POST" action="{% url 'course_selection_home' %}">
         {% csrf_token %}
         <ul>
         {% for course in courses %}
             <li>
                 <label>
-                    <input type="checkbox" name="selected_courses" value="{{ course.id }}">
+                    <input type="checkbox" name="selected_courses" value="{{ course.course_code }}">
                     {{ course.course_name }} ({{ course.course_code }}) - {{ course.semester }} {{ course.academic_year }}
                 </label>
             </li>
