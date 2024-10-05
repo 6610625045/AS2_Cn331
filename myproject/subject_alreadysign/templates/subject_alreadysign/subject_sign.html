@@ -5,18 +5,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registered Courses</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e; /* พื้นหลังสีดำ */
+            margin: 0;
+            padding: 0;
+            color: #ecf0f1; /* ข้อความสีเทาอ่อน */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #2c2c2c; /* พื้นหลังกล่องสีดำเข้ม */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* เงาสีดำ */
+            text-align: center;
+        }
+
+        h1 {
+            color: #e74c3c; /* สีแดง */
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #3e3e3e; /* กล่องรายการคอร์สสีเทาเข้ม */
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: #ecf0f1; /* ข้อความสีเทาอ่อน */
+        }
+
+        li:hover {
+            background-color: #e74c3c; /* เปลี่ยนเป็นสีแดงเมื่อ hover */
+        }
+
+        .no-courses {
+            font-size: 18px;
+            color: #e74c3c; /* สีแดงสำหรับข้อความ No courses */
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e74c3c; /* ปุ่มสีแดง */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #c0392b; /* สีแดงเข้มขึ้นเมื่อ hover */
+        }
+    </style>
 </head>
 <body>
-    <h1>Registered Courses</h1>
-    <ul>
-        {% if registrations %}
-            {% for registration in registrations %}
-                <li>{{ registration.course.course_name }} - {{ registration.course.course_code }}</li>
-            {% endfor %}
-        {% else %}
-            <li>No courses registered.</li>
-        {% endif %}
-    </ul>
-    <a href="{% url 'home' %}">Back to Home</a>  <!-- เปลี่ยนเส้นทางไปยังหน้า Home -->
+    <div class="container">
+        <h1>Registered Courses</h1>
+        <ul>
+            {% if registrations %}
+                {% for registration in registrations %}
+                    <li>{{ registration.course.course_name }} - {{ registration.course.course_code }}</li>
+                {% endfor %}
+            {% else %}
+                <li class="no-courses">No courses registered.</li>
+            {% endif %}
+        </ul>
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
 </body>
 </html>

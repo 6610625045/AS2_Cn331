@@ -4,23 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Selection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e; /* พื้นหลังสีดำ */
+            margin: 0;
+            padding: 0;
+            color: #ecf0f1; /* ข้อความสีเทาอ่อน */
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #2c2c2c; /* กล่องสีดำเข้ม */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* เงาสีดำ */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #e74c3c; /* สีแดง */
+        }
+
+        form ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        form li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #3e3e3e; /* สีเทาเข้ม */
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        form li:hover {
+            background-color: #e74c3c; /* เปลี่ยนเป็นสีแดงเมื่อ hover */
+        }
+
+        label {
+            font-size: 16px;
+            margin-left: 10px;
+            flex: 1;
+            color: #ecf0f1; /* ข้อความสีเทาอ่อน */
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #e74c3c; /* ปุ่มสีแดง */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #c0392b; /* สีแดงเข้มขึ้นเมื่อ hover */
+        }
+    </style>
 </head>
 <body>
-    <h1>Select Your Courses</h1>
-    
-    <form method="POST" action="{% url 'course_selection_home' %}">
-        {% csrf_token %}
-        <ul>
-        {% for course in courses %}
-            <li>
-                <label>
-                    <input type="checkbox" name="selected_courses" value="{{ course.course_code }}">
-                    {{ course.course_name }} ({{ course.course_code }}) - {{ course.semester }} {{ course.academic_year }}
-                </label>
-            </li>
-        {% endfor %}
-        </ul>
-        <button type="submit">Register</button>
-    </form>
+    <div class="container">
+        <h1>Select Your Courses</h1>
+        
+        <form method="POST" action="{% url 'course_selection_home' %}">
+            {% csrf_token %}
+            <ul>
+                {% for course in courses %}
+                    <li>
+                        <label>
+                            <input type="checkbox" name="selected_courses" value="{{ course.course_code }}">
+                            {{ course.course_name }} ({{ course.course_code }}) - {{ course.semester }} {{ course.academic_year }}
+                        </label>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="submit">Register</button>
+        </form>
+    </div>
 </body>
 </html>
