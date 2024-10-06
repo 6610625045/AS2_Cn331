@@ -76,7 +76,9 @@
         <ul>
             {% if registrations %}
                 {% for registration in registrations %}
-                    <li>{{ registration.course.course_name }} - {{ registration.course.course_code }}</li>
+                    <li>
+                        {{ registration.course.course_name }} - {{ registration.course.course_code }}
+                    </li>
                 {% endfor %}
             {% else %}
                 <li class="no-courses">No courses registered.</li>

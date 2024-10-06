@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'courses',
     'course_selection',
     'subject_alreadysign',
+    'cancel_course',
 ]
 
 MIDDLEWARE = [

@@ -26,5 +26,5 @@ urlpatterns = [
     path('course_selection/', include('course_selection.urls')),
     path('courses/', include('courses.urls', namespace='courses')),  
     path('subject_alreadysign/', include('subject_alreadysign.urls')),
-
+    path('cancel_course/', include('cancel_course.urls')),  # รวม URL ของแอป cancel_course
 ]

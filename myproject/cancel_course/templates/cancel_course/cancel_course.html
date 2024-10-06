@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Course</title>
+</head>
+<body>
+    <h1>Cancel Course Registration</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <ul>
+            {% if registrations %}
+                {% for registration in registrations %}
+                    <li>
+                        <label>
+                            <input type="checkbox" name="cancel_courses" value="{{ registration.course.course_code }}">
+                            {{ registration.course.course_name }} - {{ registration.course.course_code }}
+                        </label>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="no-courses">No courses registered.</li>
+            {% endif %}
+        </ul>
+        <button type="submit">Cancel Selected Courses</button>
+    </form>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
