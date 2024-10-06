@@ -3,28 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cancel Course</title>
+    <title>Cancel Course Registration</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        form ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        form li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #3e3e3e;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .no-courses {
+            text-align: center;
+            color: #c0392b;
+        }
+
+        label {
+            font-size: 16px;
+            margin-left: 10px;
+            flex: 1;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #e74c3c;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Cancel Course Registration</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <ul>
-            {% if registrations %}
-                {% for registration in registrations %}
-                    <li>
-                        <label>
-                            <input type="checkbox" name="cancel_courses" value="{{ registration.course.course_code }}">
-                            {{ registration.course.course_name }} - {{ registration.course.course_code }}
-                        </label>
-                    </li>
-                {% endfor %}
-            {% else %}
-                <li class="no-courses">No courses registered.</li>
-            {% endif %}
-        </ul>
-        <button type="submit">Cancel Selected Courses</button>
-    </form>
-    <a href="{% url 'home' %}">Back to Home</a>
+    <div class="container">
+        <h1>Cancel Course Registration</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <ul>
+                {% if registrations %}
+                    {% for registration in registrations %}
+                        <li>
+                            <label>
+                                <input type="checkbox" name="cancel_courses" value="{{ registration.course.course_code }}">
+                                {{ registration.course.course_name }} - {{ registration.course.course_code }}
+                            </label>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="no-courses">No courses registered.</li>
+                {% endif %}
+            </ul>
+            <button type="submit">Cancel Selected Courses</button>
+        </form>
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
 </body>
 </html>
