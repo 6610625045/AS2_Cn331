@@ -7,5 +7,4 @@ class CourseRegistration(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='course_selection_registrations')
     registration_date = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.user.username} - {self.course.course_name}"
+

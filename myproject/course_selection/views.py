@@ -21,6 +21,7 @@ def course_selection_home(request):
     
     if request.method == 'POST':
         selected_courses = request.POST.getlist('selected_courses')  # ดึงค่าจาก checkbox ที่ถูกเลือก
+        print(f'Selected courses: {selected_courses}')
         if selected_courses:
             for course_code in selected_courses:
                 selected_course = get_object_or_404(Course, course_code=course_code)

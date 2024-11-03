@@ -12,7 +12,6 @@ def registered_courses(request):
             'registrations': registrations
         }
         return render(request, 'subject_alreadysign/subject_sign.html', context)
-    else:
-        return render(request, 'login.html')  # เปลี่ยนเส้นทางถ้าผู้ใช้ไม่ได้ล็อกอิน
+
     
 
